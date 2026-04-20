@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cornerstone Cattle Company of PA — Pasture-Raised Black Angus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1a1613;
+    --cream: #f5efe3;
+    --paper: #ebe3d1;
+    --rust: #8a3b1c;
+    --rust-deep: #6b2a12;
+    --moss: #4a5239;
+    --gold: #b8892d;
+    --char: #2a2520;
+    --rule: #d8cdb5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .display {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+  }
+
+  /* ===== TOP BAR ===== */
+  .topbar {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 10px 0;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .topbar-inner {
+    display: flex;
+    gap: 60px;
+    animation: marquee 40s linear infinite;
+  }
+  .topbar span { opacity: 0.75; }
+  .topbar span::before {
+    content: '✦';
+    margin-right: 60px;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(10px);
+  }
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 22px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .logo-mark {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    font-style: italic;
+  }
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .logo-text small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    color: var(--moss);
+    margin-top: 3px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 44px;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    padding: 4px 0;
+  }
+  .nav-links a:not(.cta)::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--rust);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:not(.cta):hover::after { width: 100%; }
+  .cta {
+    background: var(--ink);
+    color: var(--cream) !important;
+    padding: 12px 24px;
+    border-radius: 0;
+    transition: background 0.2s;
+  }
+  .cta:hover { background: var(--rust); }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: 92vh;
+    min-height: 680px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/rainbow.jpeg');
+    background-size: cover;
+    background-position: center 40%;
+    filter: brightness(0.72) saturate(1.05);
+  }
+  .hero-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(26,22,19,0.3) 0%,
+      rgba(26,22,19,0.1) 40%,
+      rgba(26,22,19,0.75) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 48px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--cream);
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--cream);
+    opacity: 0.5;
+  }
+  .hero-eyebrow::after { flex: 1; }
+
+  .hero-title {
+    font-size: clamp(54px, 9vw, 128px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    max-width: 1100px;
+    margin-top: 40px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: #e8d4a8;
+    font-weight: 400;
+  }
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-tagline {
+    max-width: 480px;
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.92;
+  }
+  .hero-meta {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: right;
+    opacity: 0.8;
+    line-height: 2;
+  }
+  .hero-meta strong {
+    color: #e8d4a8;
+    font-weight: 400;
+  }
+
+  /* ===== ESTABLISHED STRIP ===== */
+  .strip {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0.85;
+  }
+  .strip-item svg { width: 22px; height: 22px; stroke: var(--gold); }
+
+  /* ===== VERSE SECTION ===== */
+  .verse {
+    padding: 120px 48px;
+    text-align: center;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .verse-label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 32px;
+  }
+  .verse-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.4;
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--char);
+    letter-spacing: -0.01em;
+  }
+  .verse-text::before, .verse-text::after {
+    content: '"';
+    color: var(--gold);
+    font-size: 1.2em;
+  }
+  .verse-cite {
+    margin-top: 32px;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--moss);
+  }
+
+  /* ===== ABOUT ===== */
+  .about {
+    padding: 140px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .about-label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 24px;
+  }
+  .about h2 {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+  }
+  .about h2 em { font-style: italic; color: var(--rust); }
+  .about p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--char);
+    margin-bottom: 20px;
+  }
+  .about-img {
+    position: relative;
+    aspect-ratio: 4/5;
+    background-image: url('images/calf-71.jpeg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 40px 40px 0 -20px var(--rust), 40px 40px 0 -18px var(--paper);
+  }
+  .about-img::before {
+    content: 'NO. 71';
+    position: absolute;
+    top: -16px; left: -16px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 10px 18px;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+  }
+
+  /* ===== VALUES ===== */
+  .values {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 140px 48px;
+    position: relative;
+  }
+  .values::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .values-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .values-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 100px;
+    align-items: end;
+  }
+  .values-label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .values-header h2 {
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  .values-header h2 em { font-style: italic; color: #e8d4a8; }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(245,239,227,0.12);
+  }
+  .value-card {
+    background: var(--ink);
+    padding: 56px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 380px;
+    transition: background 0.4s;
+  }
+  .value-card:hover { background: var(--char); }
+  .value-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .value-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-top: auto;
+  }
+  .value-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.78;
+  }
+
+  /* ===== PROCESS ===== */
+  .process {
+    padding: 140px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .process-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .process-header .label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+  }
+  .process-header h2 {
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .process-header h2 em { font-style: italic; color: var(--rust); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+  .process-grid::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 10%; right: 10%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--rule) 0 8px, transparent 8px 14px);
+    z-index: 0;
+  }
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    background: var(--cream);
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-style: italic;
+  }
+  .step h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .step p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--char);
+    opacity: 0.8;
+  }
+
+  /* ===== PASTURE GALLERY ===== */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 2px;
+    background: var(--paper);
+  }
+  .g-item {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .g-item::after {
+    content: attr(data-caption);
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: var(--cream);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: rgba(26,22,19,0.6);
+    padding: 6px 12px;
+    backdrop-filter: blur(4px);
+  }
+  .g1 {
+    background-image: url('images/rainbow.jpeg');
+    grid-row: 1 / 3;
+  }
+  .g2 { background-image: url('images/calf-178.jpeg'); }
+  .g3 { background-image: url('images/fence-road.jpeg'); }
+  .g4 { background-image: url('images/fence-posts.jpeg'); }
+  .g5 { background-image: url('images/calf-71.jpeg'); }
+
+  /* ===== SHARES ===== */
+  .shares-preview {
+    padding: 140px 48px;
+    background: var(--paper);
+  }
+  .shares-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .shares-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .shares-header .label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+  }
+  .shares-header h2 {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+  }
+  .shares-header h2 em { font-style: italic; color: var(--rust); }
+  .shares-header p {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--char);
+  }
+  .shares-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .share-card {
+    background: var(--cream);
+    padding: 40px 28px;
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.2s, outline 0.2s;
+  }
+  .share-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -30px rgba(26,22,19,0.3);
+  }
+  .share-card.featured {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .share-card.featured .share-badge {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .share-card.active {
+    outline: 2px solid var(--rust);
+    outline-offset: 4px;
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -30px rgba(26,22,19,0.3);
+  }
+  .share-card.active::before {
+    content: 'Viewing';
+    position: absolute;
+    top: -11px;
+    right: 20px;
+    background: var(--rust);
+    color: var(--cream);
+    padding: 4px 12px;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    z-index: 2;
+  }
+  .share-card.featured.active::before {
+    top: auto;
+    bottom: -11px;
+    right: 20px;
+  }
+  .share-badge {
+    position: absolute;
+    top: -12px; left: 24px;
+    background: var(--rust);
+    color: var(--cream);
+    padding: 6px 12px;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .share-name {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .share-weight {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 28px;
+  }
+  .share-price {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .share-price small {
+    font-size: 14px;
+    opacity: 0.7;
+    font-family: 'Inter', sans-serif;
+  }
+  .share-est {
+    font-size: 13px;
+    margin-bottom: 28px;
+    opacity: 0.7;
+  }
+  .share-perk {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-family: 'Fraunces', serif;
+  }
+  .share-btn {
+    margin-top: auto;
+    background: transparent;
+    border: 1.5px solid currentColor;
+    color: inherit;
+    padding: 14px;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .share-btn:hover {
+    background: currentColor;
+  }
+  .share-btn:hover span { color: var(--cream); }
+  .share-card.featured .share-btn:hover span { color: var(--ink); }
+
+  /* ===== CUTS SECTION ===== */
+  .cuts {
+    padding: 140px 48px;
+    background: var(--cream);
+    border-top: 1px solid var(--rule);
+  }
+  .cuts-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .cuts-img {
+    aspect-ratio: 4/5;
+    background-image: url('images/calf-178.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .cuts-img::before {
+    content: 'NO. 178';
+    position: absolute;
+    top: -16px; right: -16px;
+    background: var(--rust);
+    color: var(--cream);
+    padding: 10px 18px;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+  }
+  .cuts h2 {
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+  }
+  .cuts h2 em { font-style: italic; color: var(--rust); }
+  .cuts-subtitle {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 12px;
+  }
+  .cuts-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 40px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+  .cuts-list li {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 15px;
+  }
+  .cuts-list li span {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--moss);
+    font-size: 14px;
+  }
+  .cuts-note {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--char);
+    opacity: 0.8;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  @keyframes cutsSwap {
+    from { opacity: 0.3; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .cuts-list.swapping, #cuts-subtitle.swapping, #cuts-intro.swapping {
+    animation: cutsSwap 0.35s ease-out;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    background: var(--moss);
+    color: var(--cream);
+    padding: 100px 48px;
+    text-align: center;
+  }
+  .timeline h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin: 0 auto 16px;
+  }
+  .timeline h3 em { font-style: italic; color: #e8d4a8; }
+  .timeline p {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    padding: 140px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact .label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+  }
+  .contact h2 {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 40px;
+  }
+  .contact h2 em { font-style: italic; color: var(--rust); }
+  .contact-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    text-align: left;
+  }
+  .contact-block h4 {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 16px;
+  }
+  .contact-block p, .contact-block a {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .contact-block a:hover { color: var(--rust); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 48px 40px;
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(245,239,227,0.15);
+  }
+  .footer-brand .logo-mark {
+    border-color: var(--cream);
+    color: var(--cream);
+  }
+  .footer-brand .logo-text, .footer-brand .logo-text small {
+    color: var(--cream);
+  }
+  .footer-brand p {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.75;
+    max-width: 360px;
+  }
+  .footer-col h5 {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .footer-col a, .footer-col p {
+    display: block;
+    color: var(--cream);
+    opacity: 0.75;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 2;
+    transition: opacity 0.2s;
+  }
+  .footer-col a:hover { opacity: 1; color: var(--gold); }
+
+  .footer-verse {
+    max-width: 1400px;
+    margin: 50px auto 0;
+    text-align: center;
+    padding: 40px 0 20px;
+  }
+  .footer-verse-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 12px;
+    color: var(--cream);
+    opacity: 0.9;
+  }
+  .footer-verse-cite {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 40px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid rgba(245,239,227,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 980px) {
+    .nav-inner { padding: 18px 24px; }
+    .nav-links { gap: 24px; }
+    .nav-links a:not(.cta) { display: none; }
+    .hero-content { padding: 40px 24px; }
+    .strip { padding: 20px 24px; gap: 20px; font-size: 10px; }
+    .verse, .about, .values, .process, .shares-preview, .cuts, .contact { padding: 80px 24px; }
+    .about, .cuts-inner, .values-header { grid-template-columns: 1fr; gap: 50px; }
+    .values-grid, .shares-grid { grid-template-columns: 1fr 1fr; }
+    .process-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+    .process-grid::before { display: none; }
+    .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
+    .g1 { grid-row: 1 / 2; grid-column: 1 / 3; }
+    .contact-card { grid-template-columns: 1fr; padding: 40px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .cuts-list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .values-grid, .shares-grid, .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>Lancaster County Pennsylvania</span>
+    <span>USDA Certified Processing</span>
+    <span>Pasture Raised · Grain Finished</span>
+    <span>2026 Harvest Reservations Open</span>
+    <span>Family Owned Since 2024</span>
+    <span>Lancaster County Pennsylvania</span>
+    <span>USDA Certified Processing</span>
+    <span>Pasture Raised · Grain Finished</span>
+    <span>2026 Harvest Reservations Open</span>
+    <span>Family Owned Since 2024</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">C</div>
+      <div class="logo-text">
+        Cornerstone Cattle Co.
+        <small>of Pennsylvania</small>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#about">Our Farm</a>
+      <a href="#shares">The Beef</a>
+      <a href="#process">Process</a>
+      <a href="contact.html">Contact</a>
+      <a href="store.html" class="cta">Reserve a Share</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span>Est. 2024 · Pennsylvania</span>
+    </div>
+    <h1 class="hero-title display">
+      Raised on grass,<br>
+      finished with <em>care</em>,<br>
+      grown from the <em>ground up</em>.
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-tagline">
+        A small, family-owned farm raising a handful of Black Angus each year &mdash; pasture-raised their entire lives, grain-finished at the end for flavor and marbling worth waiting for.
+      </p>
+      <div class="hero-meta">
+        <strong>2026 Harvest</strong><br>
+        Taking Orders Now<br>
+        Ready Late October
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>
+    <span>Pasture Raised</span>
+  </div>
+  <div class="strip-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+    <span>USDA Certified</span>
+  </div>
+  <div class="strip-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9-9-4-9-9z"/><path d="M12 7v5l3 2"/></svg>
+    <span>Grain Finished</span>
+  </div>
+  <div class="strip-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+    <span>Family Owned</span>
+  </div>
+  <div class="strip-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 21V10M4 10l8-6 8 6M4 10h16v11M10 21v-6h4v6"/></svg>
+    <span>Local Pickup</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-img"></div>
+  <div>
+    <div class="about-label">Our Story</div>
+    <h2 class="display">A handful of cattle. A <em>lot</em> of care.</h2>
+    <p>
+      Cornerstone Cattle Company of PA is a small, family-owned operation in Bucks County, Pennsylvania, raising Black Angus beef the way it ought to be raised &mdash; slowly, on open pasture, with the whole family involved from fence line to freezer.
+    </p>
+    <p>
+      Our cattle spend their lives on grass, and are finished on grain at the end to develop the marbling, tenderness, and deep flavor you'd expect from premium beef. With a small Wagyu-cross influence in this year's herd, the eating quality is something we're genuinely proud of.
+    </p>
+    <p>
+      We process at a USDA-certified butcher in Lancaster County, handle pickup ourselves, and bring the finished beef back locally for you. No coordinating with the processor. No runaround. Just good beef, raised right, delivered by the people who raised it.
+    </p>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="values-inner">
+    <div class="values-header">
+      <div class="values-label">Our Standards</div>
+      <h2 class="display">Small herd. <em>High standards.</em> No shortcuts.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">No. 01</div>
+        <p>Every animal spends its entire life on open pasture. No feedlots. No confinement. Just grass, sunshine, and room to be a cow.</p>
+        <h3>Pasture for Life</h3>
+      </div>
+      <div class="value-card">
+        <div class="value-num">No. 02</div>
+        <p>A grain finish at the tail end of life builds the marbling and flavor most people expect from premium beef &mdash; without compromising the health benefits of pasture raising.</p>
+        <h3>Finished for Flavor</h3>
+      </div>
+      <div class="value-card">
+        <div class="value-num">No. 03</div>
+        <p>Processing happens at a USDA-certified butcher in Lancaster County. We handle pickup. We bring it to you. You never have to coordinate with the processor.</p>
+        <h3>Handled Start to Finish</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header">
+    <div class="label">How It Works</div>
+    <h2 class="display">From our pasture to your freezer &mdash; <em>four steps</em>, no surprises.</h2>
+  </div>
+  <div class="process-grid">
+    <div class="step">
+      <div class="step-num display">I</div>
+      <h4>Reserve Your Share</h4>
+      <p>Choose whole, half, quarter, or eighth. Place your reservation online or reach out directly.</p>
+    </div>
+    <div class="step">
+      <div class="step-num display">II</div>
+      <h4>We Raise the Cattle</h4>
+      <p>Pasture-raised on our farm. Grain-finished for marbling at the tail end. Tracked individually.</p>
+    </div>
+    <div class="step">
+      <div class="step-num display">III</div>
+      <h4>USDA Processing</h4>
+      <p>Processed and individually packaged at a certified butcher in Lancaster County.</p>
+    </div>
+    <div class="step">
+      <div class="step-num display">IV</div>
+      <h4>Local Pickup</h4>
+      <p>We bring your beef back locally. Arrange pickup with us. Fill the freezer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="g-item g1" data-caption="The Farm"></div>
+  <div class="g-item g2" data-caption="No. 178"></div>
+  <div class="g-item g3" data-caption="New Fence Line"></div>
+  <div class="g-item g4" data-caption="Pasture Built"></div>
+  <div class="g-item g5" data-caption="No. 71"></div>
+</section>
+
+<!-- SHARES -->
+<section class="shares-preview" id="shares">
+  <div class="shares-inner">
+    <div class="shares-header">
+      <div class="label">The 2026 Harvest</div>
+      <h2 class="display">Choose your <em>share</em>.</h2>
+      <p>Pricing is based on actual packaged weight, so totals vary slightly animal to animal. Typical packaged yield per animal is about 400 pounds. <em style="font-family: 'Fraunces', serif; color: var(--rust);">Tap a share below to see what's in the box.</em></p>
+    </div>
+    <div class="shares-grid">
+      <div class="share-card featured active" data-size="whole">
+        <div class="share-badge">Includes Freezer</div>
+        <div class="share-name display">Whole</div>
+        <div class="share-weight">~400 lbs packaged</div>
+        <div class="share-price display">$13.50<small>/lb</small></div>
+        <div class="share-est">Est. total $5,400</div>
+        <div class="share-perk">✦ Chest freezer included</div>
+        <a href="store.html" class="share-btn"><span>Reserve Whole</span></a>
+      </div>
+      <div class="share-card" data-size="half">
+        <div class="share-name display">Half</div>
+        <div class="share-weight">~200 lbs packaged</div>
+        <div class="share-price display">$13.50<small>/lb</small></div>
+        <div class="share-est">Est. total $2,700</div>
+        <a href="store.html" class="share-btn"><span>Reserve Half</span></a>
+      </div>
+      <div class="share-card" data-size="quarter">
+        <div class="share-name display">Quarter</div>
+        <div class="share-weight">~100 lbs packaged</div>
+        <div class="share-price display">$14.00<small>/lb</small></div>
+        <div class="share-est">Est. total $1,400</div>
+        <a href="store.html" class="share-btn"><span>Reserve Quarter</span></a>
+      </div>
+      <div class="share-card" data-size="eighth">
+        <div class="share-name display">Eighth</div>
+        <div class="share-weight">~50 lbs packaged</div>
+        <div class="share-price display">$14.50<small>/lb</small></div>
+        <div class="share-est">Est. total $725</div>
+        <a href="store.html" class="share-btn"><span>Reserve Eighth</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUTS -->
+<section class="cuts">
+  <div class="cuts-inner">
+    <div class="cuts-img"></div>
+    <div>
+      <div class="cuts-subtitle" id="cuts-subtitle">A Typical Whole Share</div>
+      <h2 class="display">What you can <em>expect</em> in your box.</h2>
+      <p id="cuts-intro">Exact cuts vary slightly based on processing and total yield, but the overall quantity remains consistent with the share size you choose. Here's what roughly 400 lbs of a whole share often includes:</p>
+      <ul class="cuts-list" id="cuts-list">
+        <!-- dynamically filled -->
+      </ul>
+      <p class="cuts-note">Individually packaged and labeled at our USDA-certified butcher. Cuts are predetermined to keep each share balanced and consistent.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const cutData = {
+    whole: {
+      label: 'A Typical Whole Share',
+      totalLbs: 400,
+      intro: "Exact cuts vary slightly based on processing and total yield, but the overall quantity remains consistent with the share size you choose. Here's what roughly 400 lbs of a whole share often includes:",
+      items: [
+        ['Ground Beef', '160–200 lbs'],
+        ['Ribeye / Delmonico', '24–32 steaks'],
+        ['NY Strip', '16–24 steaks'],
+        ['Sirloin', '16–24 steaks'],
+        ['Chuck Roasts', '8–16'],
+        ['Arm / Round Roasts', '8–16'],
+        ['Short Ribs', 'included'],
+        ['Stew Beef', 'included'],
+        ['Brisket', 'whole'],
+        ['Flank / Skirt', 'as available']
+      ]
+    },
+    half: {
+      label: 'A Typical Half Share',
+      totalLbs: 200,
+      intro: "Exact cuts vary slightly based on processing and total yield, but the overall quantity remains consistent with the share size you choose. Here's what roughly 200 lbs of a half share often includes:",
+      items: [
+        ['Ground Beef', '80–100 lbs'],
+        ['Ribeye / Delmonico', '12–16 steaks'],
+        ['NY Strip', '8–12 steaks'],
+        ['Sirloin', '8–12 steaks'],
+        ['Chuck Roasts', '4–8'],
+        ['Arm / Round Roasts', '4–8'],
+        ['Short Ribs', 'included'],
+        ['Stew Beef', 'included'],
+        ['Brisket', 'half'],
+        ['Flank / Skirt', 'as available']
+      ]
+    },
+    quarter: {
+      label: 'A Typical Quarter Share',
+      totalLbs: 100,
+      intro: "Exact cuts vary slightly based on processing and total yield, but the overall quantity remains consistent with the share size you choose. Here's what roughly 100 lbs of a quarter share often includes:",
+      items: [
+        ['Ground Beef', '40–50 lbs'],
+        ['Ribeye / Delmonico', '6–8 steaks'],
+        ['NY Strip', '4–6 steaks'],
+        ['Sirloin', '4–6 steaks'],
+        ['Chuck Roasts', '2–4'],
+        ['Arm / Round Roasts', '2–4'],
+        ['Short Ribs', 'included'],
+        ['Stew Beef', 'included'],
+        ['Brisket', 'portion'],
+        ['Flank / Skirt', 'as available']
+      ]
+    },
+    eighth: {
+      label: 'A Typical Eighth Share',
+      totalLbs: 50,
+      intro: "Exact cuts vary slightly based on processing and total yield, but the overall quantity remains consistent with the share size you choose. Here's what roughly 50 lbs of an eighth share often includes:",
+      items: [
+        ['Ground Beef', '20–25 lbs'],
+        ['Ribeye / Delmonico', '3–4 steaks'],
+        ['NY Strip', '2–3 steaks'],
+        ['Sirloin', '2–3 steaks'],
+        ['Chuck Roasts', '1–2'],
+        ['Arm / Round Roasts', '1–2'],
+        ['Short Ribs', 'portion'],
+        ['Stew Beef', 'portion'],
+        ['Brisket', 'small portion'],
+        ['Flank / Skirt', 'as available']
+      ]
+    }
+  };
+
+  const shareCards = document.querySelectorAll('.share-card');
+  const cutsSubtitle = document.getElementById('cuts-subtitle');
+  const cutsIntro = document.getElementById('cuts-intro');
+  const cutsList = document.getElementById('cuts-list');
+
+  function renderCuts(size) {
+    const d = cutData[size];
+    [cutsSubtitle, cutsIntro, cutsList].forEach(el => {
+      el.classList.remove('swapping');
+      // force reflow so animation replays
+      void el.offsetWidth;
+      el.classList.add('swapping');
+    });
+    cutsSubtitle.textContent = d.label;
+    cutsIntro.textContent = d.intro;
+    cutsList.innerHTML = d.items.map(([name, qty]) =>
+      `<li>${name} <span>${qty}</span></li>`
+    ).join('');
+  }
+
+  shareCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't hijack the Reserve button
+      if (e.target.closest('.share-btn')) return;
+      e.preventDefault();
+      if (card.classList.contains('active')) return;
+      shareCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      renderCuts(card.dataset.size);
+      // smooth scroll to cuts section
+      document.querySelector('.cuts').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // initial render — whole share by default
+  renderCuts('whole');
+</script>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <h3 class="display">Reservations open now for the <em>2026 harvest</em>.<br>Beef ready late October or the first week of November.</h3>
+  <p>Limited shares available</p>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact" id="contact">
+  <div class="label">Get In Touch</div>
+  <h2 class="display">Reserve a share or <em>just say hello</em>.</h2>
+  <div class="contact-card" style="grid-template-columns: 1fr; text-align: center; padding: 70px 48px;">
+    <div>
+      <p style="font-family: 'Fraunces', serif; font-size: 22px; line-height: 1.5; color: var(--char); max-width: 620px; margin: 0 auto 36px; font-style: italic;">
+        Questions about the herd, the shares, pickup logistics, or anything else &mdash; we'd love to hear from you.
+      </p>
+      <a href="contact.html" class="cta" style="display: inline-block; background: var(--ink); color: var(--cream); text-decoration: none; padding: 18px 40px; font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600;">Contact Us →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <div class="logo-mark">C</div>
+        <div class="logo-text">
+          Cornerstone Cattle Co.
+          <small>of Pennsylvania</small>
+        </div>
+      </a>
+      <p>A small, family-owned farm raising Black Angus beef the way it ought to be raised &mdash; slowly, carefully, and with the whole family involved.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <a href="#about">Our Farm</a>
+      <a href="#process">Process</a>
+      <a href="#shares">The Beef</a>
+      <a href="store.html">Reserve</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="contact.html">Contact Us</a>
+      <p>Pennsylvania</p>
+    </div>
+    <div class="footer-col">
+      <h5>The Harvest</h5>
+      <p>2026 Season</p>
+      <p>Late October<br>or early November</p>
+      <a href="store.html">Reserve a Share →</a>
+    </div>
+  </div>
+
+  <div class="footer-verse">
+    <p class="footer-verse-text">"Built on the foundation of the apostles and prophets, with Christ Jesus himself as the chief cornerstone."</p>
+    <div class="footer-verse-cite">Ephesians 2:20</div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 Cornerstone Cattle Company of PA</div>
+    <div>Pasture Raised · Grain Finished · Family Owned</div>
+  </div>
+</footer>
+
+</body>
+</html>

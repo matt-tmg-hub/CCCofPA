@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us — Cornerstone Cattle Company of PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1a1613;
+    --cream: #f5efe3;
+    --paper: #ebe3d1;
+    --rust: #8a3b1c;
+    --rust-deep: #6b2a12;
+    --moss: #4a5239;
+    --gold: #b8892d;
+    --char: #2a2520;
+    --rule: #d8cdb5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 22px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .logo-mark {
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    font-style: italic;
+  }
+  .logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  .logo-text small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    color: var(--moss);
+    margin-top: 3px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 44px;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--rust); }
+  .cta {
+    background: var(--ink);
+    color: var(--cream) !important;
+    padding: 12px 24px;
+    transition: background 0.2s;
+  }
+  .cta:hover { background: var(--rust); }
+
+  /* HEADER BANNER */
+  .contact-header {
+    position: relative;
+    padding: 120px 48px 100px;
+    background: url('images/fence-posts.jpeg') center/cover;
+    color: var(--cream);
+    text-align: center;
+    overflow: hidden;
+  }
+  .contact-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,22,19,0.55), rgba(26,22,19,0.75));
+  }
+  .contact-header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .contact-header .label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .contact-header h1 {
+    font-size: clamp(48px, 6.5vw, 88px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+  .contact-header h1 em {
+    font-style: italic;
+    color: #e8d4a8;
+  }
+  .contact-header p {
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.7;
+    opacity: 0.92;
+  }
+
+  /* MAIN GRID */
+  .contact-main {
+    max-width: 1300px;
+    margin: -60px auto 0;
+    padding: 0 48px 120px;
+    position: relative;
+    z-index: 2;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+    background: var(--cream);
+    border: 1.5px solid var(--ink);
+    box-shadow: 20px 20px 0 -4px var(--paper), 20px 20px 0 -2px var(--ink);
+  }
+
+  /* FORM SIDE */
+  .form-side {
+    padding: 64px;
+    border-right: 1px solid var(--rule);
+  }
+  .form-side h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .form-side h2 em { font-style: italic; color: var(--rust); }
+  .form-side .subtitle {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-group {
+    margin-bottom: 22px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--rule);
+    background: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--rust);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%231a1613' stroke-width='1.5'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 14px;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .submit-btn:hover { background: var(--rust); }
+  .submit-btn svg { width: 18px; height: 18px; }
+
+  .form-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--moss);
+    font-style: italic;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+  }
+
+  /* INFO SIDE */
+  .info-side {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 64px;
+    position: relative;
+  }
+  .info-side::after {
+    content: '';
+    position: absolute;
+    top: 40px; right: 40px;
+    width: 80px; height: 80px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+  .info-side h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .info-block {
+    margin-bottom: 44px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid rgba(245,239,227,0.15);
+  }
+  .info-block:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .info-block h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+  .info-block p {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.82;
+  }
+  .info-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    opacity: 0.9;
+  }
+
+  .verse-box {
+    margin-top: 44px;
+    padding: 28px;
+    background: rgba(245,239,227,0.06);
+    border-left: 2px solid var(--gold);
+  }
+  .verse-box p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    opacity: 0.92;
+  }
+  .verse-box small {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* FAQ MINI */
+  .quick-answers {
+    background: var(--paper);
+    padding: 100px 48px;
+    border-top: 1px solid var(--rule);
+  }
+  .quick-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .quick-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .quick-header .label {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+  }
+  .quick-header h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    letter-spacing: -0.025em;
+  }
+  .quick-header h2 em { font-style: italic; color: var(--rust); }
+
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .quick-card {
+    padding: 32px;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    transition: transform 0.3s;
+  }
+  .quick-card:hover { transform: translateY(-4px); }
+  .quick-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: start;
+    gap: 12px;
+  }
+  .quick-card h4::before {
+    content: 'Q';
+    font-style: italic;
+    color: var(--rust);
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+  .quick-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--char);
+  }
+
+  /* SUCCESS MODAL */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,22,19,0.75);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .modal-backdrop.active { display: flex; }
+  .modal {
+    background: var(--cream);
+    max-width: 480px;
+    width: 100%;
+    padding: 48px;
+    border: 1.5px solid var(--ink);
+    text-align: center;
+    animation: modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .modal-mark {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 28px;
+    background: var(--rust);
+    color: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-style: italic;
+  }
+  .modal h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .modal p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--char);
+    margin-bottom: 24px;
+  }
+  .modal-close {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 16px 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .modal-close:hover { background: var(--rust); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 60px 48px 30px;
+    text-align: center;
+  }
+  .footer-verse-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 12px;
+    opacity: 0.9;
+  }
+  .footer-verse-cite {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .footer-bottom {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(245,239,227,0.15);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 980px) {
+    .nav-inner { padding: 18px 24px; }
+    .nav-links a:not(.cta) { display: none; }
+    .contact-header { padding: 80px 24px 80px; }
+    .contact-main { padding: 0 24px 80px; margin-top: -40px; }
+    .contact-grid { grid-template-columns: 1fr; box-shadow: 10px 10px 0 -2px var(--paper), 10px 10px 0 0 var(--ink); }
+    .form-side, .info-side { padding: 40px; border-right: none; }
+    .form-side { border-bottom: 1px solid var(--rule); }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .quick-answers { padding: 60px 24px; }
+    .quick-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">C</div>
+      <div class="logo-text">
+        Cornerstone Cattle Co.
+        <small>of Pennsylvania</small>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#about">Our Farm</a>
+      <a href="index.html#shares">The Beef</a>
+      <a href="index.html#process">Process</a>
+      <a href="store.html" class="cta">Reserve a Share</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="contact-header">
+  <div class="contact-header-inner">
+    <div class="label">Get In Touch</div>
+    <h1 class="display">We'd love to <em>hear from you</em>.</h1>
+    <p>Questions about our herd, the shares, pickup logistics, or reserving a share &mdash; send us a note and we'll be back in touch within a day or two.</p>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="contact-main">
+  <div class="contact-grid">
+
+    <!-- FORM -->
+    <div class="form-side">
+      <h2 class="display">Send us a <em>message</em>.</h2>
+      <div class="subtitle">Usually responds within 24 hours</div>
+
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="firstName" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="lastName" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" required placeholder="you@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Phone (optional)</label>
+          <input type="tel" name="phone" placeholder="(555) 555-0123" />
+        </div>
+
+        <div class="form-group">
+          <label>What are you reaching out about?</label>
+          <select name="topic" required>
+            <option value="">Choose a topic...</option>
+            <option value="reserve">Reserving a share</option>
+            <option value="cuts">Questions about the cuts</option>
+            <option value="pickup">Pickup &amp; logistics</option>
+            <option value="herd">Questions about the herd</option>
+            <option value="freezer">The chest freezer (whole share)</option>
+            <option value="general">General inquiry</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea name="message" required placeholder="Tell us a bit about what you're looking for..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
+          <span>Send Message</span>
+        </button>
+
+        <p class="form-note">We respect your inbox. Your details stay with us.</p>
+      </form>
+    </div>
+
+    <!-- INFO -->
+    <aside class="info-side">
+      <h3>Cornerstone Cattle Co.</h3>
+
+      <div class="info-block">
+        <div class="info-label">Where We Are</div>
+        <h4>Pennsylvania</h4>
+        <p>A small, family-owned farm raising Black Angus (with a small Wagyu-cross influence) a handful at a time.</p>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label">Response Time</div>
+        <h4>Within 24 hours</h4>
+        <p>We check messages daily. Expect a reply the same day or the next, and longer notes may take a little more time to answer thoughtfully.</p>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label">The 2026 Season</div>
+        <h4>Reservations Open</h4>
+        <p>A limited number of shares available for the 2026 harvest. Beef ready late October or the first week of November.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- QUICK ANSWERS -->
+<section class="quick-answers">
+  <div class="quick-inner">
+    <div class="quick-header">
+      <div class="label">Before You Write</div>
+      <h2 class="display">A few <em>quick answers</em>.</h2>
+    </div>
+    <div class="quick-grid">
+      <div class="quick-card">
+        <h4>When is beef ready?</h4>
+        <p>Late October or the first week of November 2026. We'll coordinate pickup with you directly once the cattle are at the processor.</p>
+      </div>
+      <div class="quick-card">
+        <h4>How does payment work?</h4>
+        <p>A one-third deposit reserves your share. The remaining balance is based on actual packaged weight and settled at pickup.</p>
+      </div>
+      <div class="quick-card">
+        <h4>Where is pickup?</h4>
+        <p>We bring beef back locally in Pennsylvania from our USDA-certified butcher in Lancaster County. You never coordinate with the processor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-verse-text">"Built on the foundation of the apostles and prophets, with Christ Jesus himself as the chief cornerstone."</p>
+  <div class="footer-verse-cite">Ephesians 2:20</div>
+  <div class="footer-bottom">© 2026 Cornerstone Cattle Company of PA · Pennsylvania</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <div class="modal-mark display">✓</div>
+    <h3 class="display">Message sent.</h3>
+    <p>Thank you for reaching out. We'll be in touch within 24 hours with a thoughtful response.</p>
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active')">Close</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('modal').classList.add('active');
+    e.target.reset();
+  });
+
+  document.getElementById('modal').addEventListener('click', (e) => {
+    if (e.target.id === 'modal') {
+      e.target.classList.remove('active');
+    }
+  });
+</script>
+
+</body>
+</html>
