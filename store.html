@@ -403,7 +403,11 @@
     align-items: center;
     justify-content: center;
     gap: 12px;
+    text-decoration: none;
+    box-sizing: border-box;
   }
+  a.checkout-btn { color: var(--cream); }
+  a.checkout-btn:visited { color: var(--cream); }
   .checkout-btn:hover:not(:disabled) { background: var(--rust); }
   .checkout-btn:disabled {
     opacity: 0.35;
@@ -630,7 +634,7 @@
 <div class="store-grid">
   <div class="products">
 
-    <div class="product featured" data-name="Whole Share" data-price="13.50" data-weight="400" data-perk="chest freezer included">
+    <div class="product featured" data-name="Whole Share" data-price="13.50" data-weight="400" data-perk="chest freezer included" data-stripe="https://buy.stripe.com/5kQ8wQgFbchPfYh6xc7N600">
       <div class="product-main">
         <div class="p-num display">01</div>
         <div class="p-info">
@@ -647,7 +651,7 @@
       </div>
     </div>
 
-    <div class="product" data-name="Half Share" data-price="13.50" data-weight="200" data-perk="">
+    <div class="product" data-name="Half Share" data-price="13.50" data-weight="200" data-perk="" data-stripe="https://buy.stripe.com/14AfZi3Sp5Trh2laNs7N601">
       <div class="product-main">
         <div class="p-num display">02</div>
         <div class="p-info">
@@ -663,7 +667,7 @@
       </div>
     </div>
 
-    <div class="product" data-name="Quarter Share" data-price="14.00" data-weight="100" data-perk="">
+    <div class="product" data-name="Quarter Share" data-price="14.00" data-weight="100" data-perk="" data-stripe="https://buy.stripe.com/5kQ6oIex35Tr13nf3I7N602">
       <div class="product-main">
         <div class="p-num display">03</div>
         <div class="p-info">
@@ -679,7 +683,7 @@
       </div>
     </div>
 
-    <div class="product" data-name="Eighth Share" data-price="14.50" data-weight="50" data-perk="">
+    <div class="product" data-name="Eighth Share" data-price="14.50" data-weight="50" data-perk="" data-stripe="https://buy.stripe.com/cNidRafB795DdQ93l07N603">
       <div class="product-main">
         <div class="p-num display">04</div>
         <div class="p-info">
@@ -709,34 +713,17 @@
       </div>
     </div>
 
-    <form id="reservation-form" action="https://formspree.io/f/xlgalnwk" method="POST" style="display:none;">
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" name="name" required placeholder="Your name" />
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" name="email" required placeholder="you@example.com" />
-      </div>
-      <div class="form-group">
-        <label>Phone</label>
-        <input type="tel" name="phone" placeholder="(804) 555-0123" />
-      </div>
-      <div class="form-group">
-        <label>Notes (optional)</label>
-        <textarea name="notes" placeholder="Cut preferences, pickup questions..."></textarea>
-      </div>
-
-      <button type="submit" class="checkout-btn" id="checkout-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
-        <span>Request Reservation</span>
-      </button>
+    <div id="stripe-action" style="display:none;">
+      <a id="stripe-btn" href="#" target="_blank" rel="noopener" class="checkout-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span>Reserve with Secure Checkout</span>
+      </a>
 
       <div class="secure-note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        We'll follow up with a secure deposit invoice
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Secure payment · Powered by Stripe
       </div>
-    </form>
+    </div>
   </aside>
 </div>
 
@@ -752,7 +739,7 @@
 
     <div class="faq-item">
       <div class="faq-q">When will my beef be ready?</div>
-      <div class="faq-a">The 2026 harvest is expected to be ready in mid to late November. We'll be in touch with exact timing and pickup coordination once the cattle go to the processor.</div>
+      <div class="faq-a">The 2026 harvest is expected to be ready mid to late November. We'll be in touch with exact timing and pickup coordination once the cattle go to the processor.</div>
     </div>
 
     <div class="faq-item">
@@ -784,23 +771,13 @@
   <div class="footer-bottom">© 2026 Cornerstone Cattle Company of PA · Pennsylvania</div>
 </footer>
 
-<!-- MODAL -->
-<div class="modal-backdrop" id="modal">
-  <div class="modal">
-    <div class="modal-mark display">✓</div>
-    <h3 class="display">Request received.</h3>
-    <p>Thank you for your interest in reserving a 2026 share. We'll be in touch within 24 hours with next steps and a secure link to submit your one-third deposit.</p>
-    <div class="modal-detail" id="modal-detail"></div>
-    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active')">Close</button>
-  </div>
-</div>
-
 <script>
   let selectedProduct = null;
 
   const products = document.querySelectorAll('.product');
   const summaryContent = document.getElementById('summary-content');
-  const form = document.getElementById('reservation-form');
+  const stripeAction = document.getElementById('stripe-action');
+  const stripeBtn = document.getElementById('stripe-btn');
 
   products.forEach(product => {
     product.addEventListener('click', () => {
@@ -811,7 +788,8 @@
         name: product.dataset.name,
         price: parseFloat(product.dataset.price),
         weight: parseInt(product.dataset.weight),
-        perk: product.dataset.perk
+        perk: product.dataset.perk,
+        stripe: product.dataset.stripe
       };
 
       updateSummary();
@@ -850,77 +828,30 @@
         <span style="font-style: italic; color: var(--rust);">✦ Chest freezer</span>
       </div>` : ''}
       <div class="summary-row total">
-        <span>Deposit</span>
+        <span>Deposit today</span>
         <span>$${deposit.toLocaleString()}</span>
       </div>
       <div class="total-note">Roughly one-third of the estimated total. Balance based on actual packaged weight, settled at pickup in November 2026.</div>
     `;
 
-    form.style.display = 'block';
+    // Point Stripe button at the correct checkout URL for this share
+    if (selectedProduct.stripe) {
+      stripeBtn.setAttribute('href', selectedProduct.stripe);
+      stripeAction.style.display = 'block';
+    } else {
+      stripeAction.style.display = 'none';
+    }
   }
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!selectedProduct) return;
-
-    const subtotal = selectedProduct.price * selectedProduct.weight;
-    const depositMap = {
-      'Whole Share': 1800,
-      'Half Share': 900,
-      'Quarter Share': 480,
-      'Eighth Share': 250
-    };
-    const deposit = depositMap[selectedProduct.name] || Math.round(subtotal / 3);
-
-    const submitBtn = form.querySelector('.checkout-btn span');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-
-    // Build form data with share details baked in
-    const formData = new FormData(form);
-    formData.append('share_requested', selectedProduct.name);
-    formData.append('estimated_weight_lbs', selectedProduct.weight);
-    formData.append('estimated_total', `$${subtotal.toFixed(2)}`);
-    formData.append('deposit_due', `$${deposit.toLocaleString()}`);
-    if (selectedProduct.perk) {
-      formData.append('includes', 'Chest freezer');
-    }
-    formData.append('_subject', `New Reservation Request — ${selectedProduct.name}`);
-
-    const email = formData.get('email');
-
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        document.getElementById('modal-detail').innerHTML = `
-          ${selectedProduct.name} · ~${selectedProduct.weight} lbs<br>
-          Estimated total: $${subtotal.toLocaleString('en-US', {minimumFractionDigits: 2})}<br>
-          <strong>Deposit: $${deposit.toLocaleString()}</strong><br>
-          <span style="font-size: 13px; opacity: 0.7;">Next steps sent to ${email}</span>
-        `;
-        document.getElementById('modal').classList.add('active');
-        form.reset();
-      } else {
-        alert('Sorry — there was a problem submitting your request. Please try again or use our contact form.');
+  // Close modal on backdrop click (in case modal is ever re-added)
+  const modal = document.getElementById('modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target.id === 'modal') {
+        e.target.classList.remove('active');
       }
-    } catch (err) {
-      alert('Sorry — there was a problem submitting your request. Please try again or use our contact form.');
-    } finally {
-      submitBtn.textContent = originalText;
-    }
-  });
-
-  // Close modal on backdrop click
-  document.getElementById('modal').addEventListener('click', (e) => {
-    if (e.target.id === 'modal') {
-      e.target.classList.remove('active');
-    }
-  });
+    });
+  }
 </script>
 
 </body>
