@@ -634,24 +634,24 @@
 <div class="store-grid">
   <div class="products">
 
-    <div class="product featured" data-name="Whole Share" data-price="13.00" data-weight="400" data-perk="chest freezer included" data-stripe="https://buy.stripe.com/5kQ8wQgFbchPfYh6xc7N600">
+    <div class="product featured" data-name="Whole Share" data-price="12.50" data-weight="400" data-perk="" data-stripe="https://buy.stripe.com/5kQ8wQgFbchPfYh6xc7N600">
       <div class="product-main">
         <div class="p-num display">01</div>
         <div class="p-info">
           <div class="p-name">Whole Share</div>
           <div class="p-weight">Approx. 400 lbs packaged</div>
           <div class="p-desc">An entire animal's worth of beef &mdash; a full balanced selection of steaks, roasts, and ground. Designed for families, co-ops, or anyone stocking a serious freezer.</div>
-          <div class="p-perk">✦ Chest freezer included with purchase</div>
+          <div class="p-perk">✦ Best value &mdash; lowest price per pound</div>
         </div>
       </div>
       <div class="product-price">
-        <div class="price-num">$13.00</div>
+        <div class="price-num">$12.50</div>
         <div class="price-unit">per pound</div>
-        <div class="price-est">Est. $5,200 total</div>
+        <div class="price-est">Est. $5,000 total</div>
       </div>
     </div>
 
-    <div class="product" data-name="Half Share" data-price="13.00" data-weight="200" data-perk="" data-stripe="https://buy.stripe.com/14AfZi3Sp5Trh2laNs7N601">
+    <div class="product" data-name="Half Share" data-price="12.75" data-weight="200" data-perk="" data-stripe="https://buy.stripe.com/14AfZi3Sp5Trh2laNs7N601">
       <div class="product-main">
         <div class="p-num display">02</div>
         <div class="p-info">
@@ -661,13 +661,13 @@
         </div>
       </div>
       <div class="product-price">
-        <div class="price-num">$13.00</div>
+        <div class="price-num">$12.75</div>
         <div class="price-unit">per pound</div>
-        <div class="price-est">Est. $2,600 total</div>
+        <div class="price-est">Est. $2,550 total</div>
       </div>
     </div>
 
-    <div class="product" data-name="Quarter Share" data-price="13.50" data-weight="100" data-perk="" data-stripe="https://buy.stripe.com/5kQ6oIex35Tr13nf3I7N602">
+    <div class="product" data-name="Quarter Share" data-price="13.00" data-weight="100" data-perk="" data-stripe="https://buy.stripe.com/5kQ6oIex35Tr13nf3I7N602">
       <div class="product-main">
         <div class="p-num display">03</div>
         <div class="p-info">
@@ -677,13 +677,13 @@
         </div>
       </div>
       <div class="product-price">
-        <div class="price-num">$13.50</div>
+        <div class="price-num">$13.00</div>
         <div class="price-unit">per pound</div>
-        <div class="price-est">Est. $1,350 total</div>
+        <div class="price-est">Est. $1,300 total</div>
       </div>
     </div>
 
-    <div class="product" data-name="Eighth Share" data-price="13.50" data-weight="50" data-perk="" data-stripe="https://buy.stripe.com/cNidRafB795DdQ93l07N603">
+    <div class="product" data-name="Eighth Share" data-price="13.25" data-weight="50" data-perk="" data-stripe="https://buy.stripe.com/cNidRafB795DdQ93l07N603">
       <div class="product-main">
         <div class="p-num display">04</div>
         <div class="p-info">
@@ -693,9 +693,9 @@
         </div>
       </div>
       <div class="product-price">
-        <div class="price-num">$13.50</div>
+        <div class="price-num">$13.25</div>
         <div class="price-unit">per pound</div>
-        <div class="price-est">Est. $675 total</div>
+        <div class="price-est">Est. $662.50 total</div>
       </div>
     </div>
 
@@ -734,7 +734,7 @@
 
     <div class="faq-item">
       <div class="faq-q">How does the deposit and final payment work?</div>
-      <div class="faq-a">Because pricing is based on actual packaged weight (which varies slightly from animal to animal), your reservation secures your share with a one-third deposit today. The remaining balance is based on the exact weight of your packaged beef and settled at pickup.</div>
+      <div class="faq-a">Because pricing is based on actual packaged weight (which varies slightly from animal to animal), payment happens in three steps. A deposit today reserves your share. On December 20, 2026 we'll email you an invoice for a second payment that brings you to half of your estimated total. The final balance is due at pickup and is based on the exact packaged weight of your beef &mdash; you only pay the per-pound price for what you actually receive.</div>
     </div>
 
     <div class="faq-item">
@@ -748,8 +748,8 @@
     </div>
 
     <div class="faq-item">
-      <div class="faq-q">What's the freezer situation for a whole share?</div>
-      <div class="faq-a">A whole share (~400 lbs packaged) needs real freezer space. That's why we include a chest freezer with every whole share purchase — plug it in and you're ready to go.</div>
+      <div class="faq-q">How much freezer space do I need?</div>
+      <div class="faq-a">Plan on roughly one cubic foot of freezer space for every 25&ndash;30 lbs of beef. A whole share (~400 lbs) needs about 15 cubic feet &mdash; a mid-size chest freezer. A half needs about 7&ndash;8 cubic feet, and a quarter or eighth usually fits in a standard home freezer.</div>
     </div>
 
     <div class="faq-item">
@@ -808,6 +808,9 @@
       'Eighth Share': 250
     };
     const deposit = depositMap[selectedProduct.name] || Math.round(subtotal / 3);
+    // Second payment (invoiced Dec 20) brings the customer to 50% of the estimated total
+    const secondPayment = Math.max(0, subtotal / 2 - deposit);
+    const fmt = n => n.toLocaleString('en-US', {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2});
 
     summaryContent.innerHTML = `
       <div class="summary-row">
@@ -820,18 +823,21 @@
       </div>
       <div class="summary-row">
         <span>Estimated total</span>
-        <span>$${subtotal.toLocaleString('en-US', {minimumFractionDigits: 2})}</span>
+        <span>~$${fmt(subtotal)}</span>
       </div>
-      ${selectedProduct.perk ? `
-      <div class="summary-row">
-        <span>Included</span>
-        <span style="font-style: italic; color: var(--rust);">✦ Chest freezer</span>
-      </div>` : ''}
       <div class="summary-row total">
-        <span>Deposit today</span>
-        <span>$${deposit.toLocaleString()}</span>
+        <span>Deposit due today</span>
+        <span>$${fmt(deposit)}</span>
       </div>
-      <div class="total-note">Roughly one-third of the estimated total. Balance based on actual packaged weight, settled at pickup in February, 2027.</div>
+      <div class="summary-row">
+        <span>Due December 20, 2026</span>
+        <span>$${fmt(secondPayment)}</span>
+      </div>
+      <div class="summary-row">
+        <span>Balance due at pickup</span>
+        <span>Based on final weight</span>
+      </div>
+      <div class="total-note">Your deposit and December payment cover half of the estimated total. We'll email an invoice for the December payment. The balance is settled at pickup in February 2027, based on actual packaged weight &mdash; you only pay for what you receive.</div>
     `;
 
     // Point Stripe button at the correct checkout URL for this share
